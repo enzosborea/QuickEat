@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des restaurants{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="d-flex justify-content-center shadow p-3 my-5 bg-warning rounded">
+        <h1>Liste des restaurants</h1>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Catégories</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for restaurant in restaurants %}
+            <tr>
+                <td>{{ restaurant.id }}</td>
+                <td>{{ restaurant.name }}</td>
+                <td>{{ restaurant.categories }}</td>
+                <td>
+                    <a href="{{ path('restaurant_show', {'id': restaurant.id}) }}" class="btn btn-primary">Voir</a>
+                    <a href="{{ path('restaurant_edit', {'id': restaurant.id}) }}" class="btn btn-secondary">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas d'infos</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('admin') }}" class="btn btn-primary">Retour</a>
+    <a href="{{ path('restaurant_new') }}" class="btn btn-success">Nouveau</a>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau plat | QuickEat{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="d-flex justify-content-center shadow my-5 p-3 mb-5 bg-warning rounded">
+        <h1>Nouveau plat</h1>
+    </div>
+    {{ include('plat/_form.html.twig') }}
+ </div>
+{% endblock %}

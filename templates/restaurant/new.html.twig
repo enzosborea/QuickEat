@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Restaurant{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="d-flex justify-content-center shadow p-3 my-5 bg-warning rounded">
+        <h1>Nouveau restaurant</h1>
+    </div>
+
+    {{ include('restaurant/_form.html.twig') }}
+</div>
+{% endblock %}

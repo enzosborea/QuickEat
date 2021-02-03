@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte | QuickEat{% endblock %}
+
+{% block body %}
+<div class="container mb-4">
+    <div class="d-flex justify-content-center shadow p-3 my-5 bg-warning rounded">
+        <h1>Mon compte</h1>
+    </div>
+    <div class="container">
+            <div class="row">
+                <div class="col-md-3 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold">Nom : </p>{{app.User.name }}</div>
+                <div class="col-md-3 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold">Prénom : </p>{{app.User.firstname }}</div>
+                <div class="col-md-3 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold">Email : </p> {{app.User.email }}</div>
+                <div class="col-md-3 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold">Argent : </p> {{app.User.sold }} €</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold">N° de l'adresse : </p>{{app.User.localisation.number }}</div>
+                <div class="col-md-4 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold">Adresse : </p>{{app.User.localisation.address }}</div>
+                <div class="col-md-2 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold">Ville : </p>{{app.User.localisation.city }}</div>
+                <div class="col-md-2 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold">Code postal : </p>{{app.User.localisation.Postalcode }}</div>
+                <div class="col-md-2 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold">Pays: </p>{{app.User.localisation.country }}</div>
+            </div>
+    </div>
+    <div class="row mb-5 mt-4">
+        <div class="col d-flex justify-content-end">
+            {% if app.User == app.User %}
+            <a href="{{ path('account_edit', {'id': app.User.id}) }}" class="btn btn-primary mr-2">Modifier informations</a>
+            <a href="{{ path('app_forgotten_password', {'id': app.User.id}) }}" class="btn btn-primary mr-2">Modifier mot de passe</a>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

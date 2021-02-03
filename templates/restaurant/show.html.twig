@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurant{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="d-flex justify-content-center shadow p-3 my-5 bg-warning rounded">
+        <h1>Restaurant</h1>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ restaurant.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ restaurant.name }}</td>
+            </tr>
+            <tr>
+                <th>Catégorie</th>
+                <td>{{ restaurant.categories }}</td>
+            </tr>
+            <tr>
+                <th>N° Adresse</th>
+                <td>{{ restaurant.localisation.number }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ restaurant.localisation.address }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ restaurant.localisation.city }}</td>
+            </tr>
+            <tr>
+                <th>Code postal</th>
+                <td>{{ restaurant.localisation.postalCode }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ restaurant.localisation.Country }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('restaurant_index') }}" class="btn btn-primary">Retour</a>
+
+    <a href="{{ path('restaurant_edit', {'id': restaurant.id}) }}" class="btn btn-secondary">Modifier</a>
+
+    {{ include('restaurant/_delete_form.html.twig') }}
+</div>
+{% endblock %}

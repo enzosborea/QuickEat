@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Upload logo | QuickEat{% endblock %}
+
+{% block body %}
+    <div class="container mt-4 mb-3">
+        <form method="post" action="" enctype="multipart/form-data">
+            <div class="d-flex justify-content-center shadow p-3 my-5 bg-warning rounded">
+                <h1>Image</h1>
+            </div>
+            {{ form_row(formlogo._token) }}
+            {{ form_row(formlogo.imageFile) }}
+            <div class="col d-flex justify-content-end mt-4">
+                <button class="btn btn-primary">Enregistrer modifications</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

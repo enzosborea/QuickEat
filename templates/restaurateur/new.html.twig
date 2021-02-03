@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}new{% endblock %}
+
+{% block body %}
+
+   <div class="container mt-4 mb-3">
+        <form method="post">
+            <div class="d-flex justify-content-center shadow p-3 mb-5 bg-warning rounded">
+                <h1>Nouveau restaurant</h1>
+            </div>
+            <div class="container">
+        {{ form_start(new_restaurateur) }}
+                <div class="row">
+                    <div class="col-md-6">{{ form_row(new_restaurateur.name) }}</div>
+                    <div class="col-md-6">{{ form_row(new_restaurateur.categories) }}</div>
+                </div>
+            {{ form_row(new_restaurateur.name) }}
+            {{ form_row(new_restaurateur.categories) }}
+            <div>
+            <h3 class="shadow-sm p-3 mb-5 bg-warning rounded mt-3">Coordonnées :</h3>
+            </div>
+                <div class="row">
+                    <div class="col-md-3">{{ form_row(new_restaurateur.localisation.city) }}</div>
+                    <div class="col-md-2">{{ form_row(new_restaurateur.localisation.number) }}</div>
+                    <div class="col-md-3">{{ form_row(new_restaurateur.localisation.address) }}</div>
+                    <div class="col-md-2">{{ form_row(new_restaurateur.localisation.postalCode) }}</div>
+                    <div class="col-md-2">{{ form_row(new_restaurateur.localisation.country) }}</div>
+                </div>
+
+            <div class="row mb-5 mt-5">
+                <div class="col d-flex justify-content-end">
+                    <button class="btn btn-primary">Valider</button>
+                </div>
+            </div>
+        </form>
+        {{ form_end(new_restaurateur) }}
+    </div>
+    </div>
+
+
+{% endblock %}

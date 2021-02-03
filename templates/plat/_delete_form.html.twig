@@ -1,0 +1,7 @@
+<div class="container mt-1">
+<form method="post" action="{{ path('plat_delete', {'id': plat.id, 'resto': resto}) }}" onsubmit="return confirm('Supprimer ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ plat.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>
+</div>

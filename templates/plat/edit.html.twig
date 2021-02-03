@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier plat | QuickEat{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="d-flex justify-content-center shadow p-3 mb-5 bg-warning rounded">
+        <h1>Modifier plat N°{{ plat.id }}</h1>
+    </div>
+    {{ include('plat/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+    {{ include('plat/_delete_form.html.twig') }}
+</div>
+{% endblock %}

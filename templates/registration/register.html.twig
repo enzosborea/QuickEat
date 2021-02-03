@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription | QuickEat{% endblock %}
+
+{% block body %}
+    <div class="container mt-4 mb-3">
+        <form method="post">
+            <div class="d-flex justify-content-center shadow p-3 mb-5 bg-warning rounded">
+                <h1>Inscription</h1>
+            </div>
+            <div class="row">
+            {{ form_start(register_form) }}
+            {{ form_row(register_form._token) }}
+                <div class="col-md-6 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(register_form.name) }}</div>
+                <div class="col-md-6 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(register_form.firstname) }}</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(register_form.email) }}</div>
+                <div class="col-md-4 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(register_form.password) }}</div>
+                <div class="col-md-4 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(register_form.phoneNumber) }}</div>
+            </div>
+            <div class="d-flex justify-content-center shadow p-2 mb-5 bg-warning rounded">
+                <h1>Coordonnées</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-2 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(register_form.localisation.number) }}</div>
+                <div class="col-md-3 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(register_form.localisation.address) }}</div>
+                <div class="col-md-3 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(register_form.localisation.city) }}</div>
+                <div class="col-md-2 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(register_form.localisation.postalCode) }}</div>
+                <div class="col-md-2 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(register_form.localisation.country) }}</div>
+            </div>
+            {{ form_row(register_form.roles) }}
+            <div class="row mb-5 mt-5">
+                <div class="col d-flex justify-content-end">
+                    <button class="btn btn-primary">S'inscrire</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    {{ form_end(register_form) }}
+
+{% endblock %}

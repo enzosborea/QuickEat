@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurant | QuickEat{% endblock %}
+
+{% block body %}
+<div class="container mt-4 mb-4">
+    <div class="d-flex justify-content-center shadow p-3 my-5 bg-warning rounded">
+        <h1>Mes restaurants</h1>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <a href="{{ path('new') }}" class="btn btn-primary">Nouveau restaurant</a>
+        </div>
+    </div>
+    <hr>
+        <div class="row d-flex justify-content-center">
+            {% for restaurant in restaurants %}
+            <div class="card m-4" style="width: 20em">
+                {% if not restaurant.imageFilename is empty %}
+                    <img class="card-img-top" src="{{ asset('uploads/resto_logo/' ~ restaurant.imageFilename) | imagine_filter('thumb')}}" alt="Image restaurant">
+                {% endif %}
+                {% if restaurant.imageFilename is empty %}
+                    <img class="card-img-top" src="{{ asset('noimg/image.jpg') | imagine_filter('thumb')}}" alt="Card image cap">
+                {% endif %}
+                        <div class="card-body">
+                        <h5 class="card-title">Restaurant : {{ restaurant.name }}</h5>
+                        <p class="card-text">Catégorie : {{ restaurant.categories }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Adresse : {{ restaurant.localisation.address }}</li>
+                        <li class="list-group-item">Ville : {{ restaurant.localisation.city }}</li>
+                    </ul>
+                    <div class="card-body">
+                        {% if not restaurant.imageFilename is empty %}
+                            <a href="{{ path('edit_logo', {'id': restaurant.id}) }}" class="btn btn-primary">Modifier l'image</a>
+                        {% endif %}
+                        {% if restaurant.imageFilename is empty %}
+                            <a href="{{ path('edit_logo', {'id': restaurant.id}) }}" class="btn btn-primary">Ajouter une image</a>
+                        {% endif %}
+                        <a href="{{ path('plat_index', {'resto': restaurant.id}) }}" class="btn btn-primary mt-3">Gestion des plats</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{{ form_start(form) }}
+    <div class="d-flex justify-content-center shadow p-3 my-5 bg-warning rounded">
+        <h1>Modification de l'utilisateur</h1>
+    </div>
+    {{ form_start(form) }}
+    {{ form_row(form._token) }}
+    <div class="row">
+        <div class="col-md-6 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(form.name) }}</div>
+        <div class="col-md-6 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(form.firstname) }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(form.email) }}</div>
+        <div class="col-md-3 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(form.password) }}</div>
+        <div class="col-md-3 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(form.phoneNumber) }}</div>
+        <div class="col-md-3 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(form.roles) }}</div>
+
+    </div>
+    <div class="d-flex justify-content-center shadow p-2 mb-5 bg-warning rounded">
+        <h1>Coordonnées</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-2 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(form.localisation.number) }}</div>
+        <div class="col-md-3 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(form.localisation.address) }}</div>
+        <div class="col-md-3 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(form.localisation.city) }}</div>
+        <div class="col-md-2 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(form.localisation.postalCode) }}</div>
+        <div class="col-md-2 shadow-sm p-3 mb-5 bg-white rounded"><p class="font-weight-bold"></p>{{ form_row(form.localisation.country) }}</div>
+    </div>
+<div class="d-flex justify-content-end mb-2">
+    <a href="{{ path('user_index') }}" class="btn btn-primary ml-3">Retour</a>
+    <button class="btn btn-success ml-2">{{ button_label|default('Enregistrer') }}</button>
+</div>
+{{ form_end(form) }}

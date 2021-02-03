@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil | QuickEat{% endblock %}
+
+{% block body %}
+    <section>
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://getintheloop.ca/wp-content/uploads/2020/10/Steinbach-Header.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.laplancha-angouleme.fr/userfiles/7370/bandeau-07.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://magasins.pizzabonici.com/media/magiccart/magicslider/cache/1920x800//p/i/pizza_background.jpg" class="d-block w-100" alt="..." >
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Précédent</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Suivant</span>
+            </a>
+        </div>
+    </section>
+    <section class="search-sec">
+        <div class="container">
+            <form action="#" method="post" novalidate="novalidate">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            {{ form_start(form) }}
+                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                {{ form_row(form.city) }}
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                {{ form_row(form.name) }}
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                {{ form_row(form.categories) }}
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                <button type="submit" class="btn btn-danger wrn-btn">Rechercher</button>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <div class="container">
+    <div class="d-flex justify-content-center shadow p-3 mb-5 bg-warning rounded">
+        <h1>Nos restaurants</h1>
+    </div>
+    </div>
+<div class="container my-5 d-flex flex-wrap justify-content-center">
+{% for restaurant in restaurants %}
+    <div class="card mx-3 my-3" style="width: 20rem;">
+        {% if not restaurant.imageFilename is empty %}
+            <img class="card-img-top" src="{{ asset('uploads/resto_logo/' ~ restaurant.imageFilename) | imagine_filter('thumb')}}" alt="Image restaurant">
+        {% endif %}
+        {% if restaurant.imageFilename is empty %}
+            <img class="card-img-top" src="{{ asset('noimg/image.jpg') | imagine_filter('thumb')}}" alt="Card image cap">
+        {% endif %}
+    <div class="card-body">
+        <h5 class="card-title"> Restaurant : {{ restaurant.name }}</h5>
+        <p class="card-text">Catégorie : {{ restaurant.categories }}</p>
+        <p class="card-text">Ville : {{ restaurant.localisation.city }}</p>
+        <a href="{{ path('lerestaurant', {'id': restaurant.id}) }}" class="btn btn-primary">En savoir +</a>
+    </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}

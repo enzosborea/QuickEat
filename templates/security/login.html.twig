@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion | QuickEat{% endblock %}
+
+{% block body %}
+    <div class="container mt-4 mb-3">
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <div class="d-flex justify-content-center shadow p-3 my-5 bg-warning rounded">
+        <h1>Se connecter</h1>
+    </div>
+    <label for="inputEmail">Email</label>
+    <input type="email" value="{{ last_Username }}" name="email" id="inputEmail" class="form-control mb-3" required autofocus>
+    <label for="inputPassword">Mot de passe</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <div class="checkbox mt-3 mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Se souvenir de moi
+            </label>
+        </div>
+    <a href="{{ path('app_forgotten_password') }}">Mot de passe oublié ?</a>
+
+    <div class="row mb-5 mt-4">
+        <div class="col d-flex justify-content-end">
+            <button class="btn btn-primary" type="submit">Se connecter</button>
+        </div>
+    </div>
+</form>
+</div>
+
+
+{% endblock %}

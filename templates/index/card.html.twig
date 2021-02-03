@@ -1,0 +1,14 @@
+<div class="card mx-4 my-4" style="width: 20em">
+    {% if not plat.imageFilename is empty %}
+        <img class="card-img-top" src="{{ asset('uploads/plats_logo/' ~ plat.imageFilename) | imagine_filter('thumb')}}" alt="Image du plat">
+    {% endif %}
+    {% if plat.imageFilename is empty %}
+        <img class="card-img-top" src="{{ asset('noimg/image.jpg') | imagine_filter('thumb')}}" alt="Card image cap">
+    {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">Nom : {{ plat.name }}</h5>
+        <h6 class="card-text">Prix : {{ plat.price }}€</h6>
+        <p class="card-text"><small class="text-muted"></small></p>
+        <a href="{{ path('panier_add', {'id': plat.id}) }}" class="btn btn-primary">Ajouter au panier</a>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier | QuickEat{% endblock %}
+
+{% block body %}
+
+<div class="container pt-5">
+{% if items | length > 0 %}
+    <div class="bg-light p-3">
+        <h1>Votre panier</h1>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produits</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.plat.name }}</td>
+                    <td>{{ item.plat.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.plat.price * item.quantity }}</td>
+                    <td>
+                        <a href="{{ path('panier_remove', {'id': item.plat.id }) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr></tr>
+            <tr>
+                <td colspan="3" class="text-right">Frais de livraison : </td>
+                <td>{{ livraison }}</td>
+            </tr>
+             <tr>
+                <td colspan="3" class="text-right">Total : </td>
+                <td>{{ total }}</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="text-right"><button class="btn btn-primary">Commander</button></td>
+            </tr>
+        </tfoot>
+    </table>
+{% else %}
+<div class="bg-light p-3 my-5">
+    <h1>Votre panier est vide</h1>
+    <a href="{{ path('index') }}" class="btn btn-primary btn-sm mt-3">Retour à l'Accueil</a>
+</div>
+{% endif %}
+</div>
+
+{% endblock %}

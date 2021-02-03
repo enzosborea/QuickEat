@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur  | QuickEat{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="d-flex justify-content-center shadow p-3 my-5 bg-warning rounded">
+        <h1>Utilisateur {{ user.id }}</h1>
+    </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ user.name }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ user.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Numéro de téléphone</th>
+                <td>{{ user.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Rôle</th>
+                <td><span class="badge badge-warning">{{ user.roles ? user.roles | json_encode : '' }}</span></td>
+            </tr>
+            <tr>
+                <th>Mot de passe</th>
+                <td>{{ user.password }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{ path('user_index') }}" class="btn btn-primary">Retour</a>
+
+    <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-secondary">Modifier</a>
+
+    {{ include('user/_delete_form.html.twig') }}
+</div>
+{% endblock %}
